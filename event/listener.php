@@ -88,7 +88,7 @@ class listener implements EventSubscriberInterface
 	/**
 	 * Modified version of the jumpbox, just lists authed forums (in the correct order)
 	 */
-	function get_forum_list($ignore_id = false, $ignore_acl = false, $ignore_nonpost = false, $ignore_emptycat = true, $only_acl_post = false)
+	private function get_forum_list($ignore_id = false, $ignore_acl = false, $ignore_nonpost = false, $ignore_emptycat = true, $only_acl_post = false)
 	{
 		// This query is identical to the jumpbox one
 		$sql = 'SELECT forum_id, forum_name, parent_id, forum_type, forum_flags, forum_options, left_id, right_id
@@ -177,7 +177,7 @@ class listener implements EventSubscriberInterface
 
 		while ($parent_id)
 		{
-			$parents[] = (int)$parent_id;
+			$parents[] = (int) $parent_id;
 			$parent_id = $list[$parent_id]['parent_id'];
 		}
 
@@ -211,7 +211,7 @@ class listener implements EventSubscriberInterface
 				if ($list[$forum_id]['parent_id'] >= 0)
 				{
 					$parent_id = $list[$forum_id]['parent_id'];
-					$list[$parent_id]['current_child'] = (int)$forum_id;
+					$list[$parent_id]['current_child'] = (int) $forum_id;
 				}
 			}
 		}
