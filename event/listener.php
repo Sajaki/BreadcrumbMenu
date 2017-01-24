@@ -88,7 +88,7 @@ class listener implements EventSubscriberInterface
 	/**
 	 * Modified version of the jumpbox, just lists authed forums (in the correct order)
 	 */
-	function get_forum_list($ignore_id = false, $ignore_acl = false, $ignore_nonpost = false, $ignore_emptycat = true, $only_acl_post = false)
+	private function get_forum_list($ignore_id = false, $ignore_acl = false, $ignore_nonpost = false, $ignore_emptycat = true, $only_acl_post = false)
 	{
 		// This query is identical to the jumpbox one
 		$sql = 'SELECT forum_id, forum_name, parent_id, forum_type, forum_flags, forum_options, left_id, right_id
