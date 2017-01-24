@@ -177,7 +177,7 @@ class listener implements EventSubscriberInterface
 
 		while ($parent_id)
 		{
-			$parents[] = (int)$parent_id;
+			$parents[] = (int) $parent_id;
 			$parent_id = $list[$parent_id]['parent_id'];
 		}
 
@@ -211,7 +211,7 @@ class listener implements EventSubscriberInterface
 				if ($list[$forum_id]['parent_id'] >= 0)
 				{
 					$parent_id = $list[$forum_id]['parent_id'];
-					$list[$parent_id]['current_child'] = (int)$forum_id;
+					$list[$parent_id]['current_child'] = (int) $forum_id;
 				}
 			}
 		}
