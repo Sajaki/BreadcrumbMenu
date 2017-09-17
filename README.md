@@ -4,7 +4,7 @@ Breadcrumb Menu for phpBB 3.1 / 3.2
 Extension for phpBB to turn the breadcrumb navigation into a forum tree menu.
 
 ## Version
-v1.0.6 (22-01-2017)
+v1.0.7 (17-09-2017)
 [![Build Status](https://api.travis-ci.org/Sajaki/BreadcrumbMenu.svg)](https://travis-ci.org/Sajaki/BreadcrumbMenu)
 
 
