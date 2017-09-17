@@ -21,6 +21,7 @@
 #breadcrumb-menu .dropdown-up {
 	padding: 0 0 9px;
 }
+
 #breadcrumb-menu .dropdown-left .pointer {
 	left: auto;
 	right: 10px;
@@ -45,10 +46,12 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
 #breadcrumb-menu .dropdown-left a {
 	padding-left: 10px;
 	padding-right: 4px;
 }
+
 #breadcrumb-menu .children > a:before {
 	content: '\203A';
 	direction: ltr;
@@ -57,6 +60,7 @@
 	right: 2px;
 	text-decoration: none !important;
 }
+
 #breadcrumb-menu .dropdown-left .children > a:before {
 	content: '\2039';
 	left: 1px;
@@ -81,6 +85,7 @@
 	top: 0;
 	bottom: 0;
 }
+
 #breadcrumb-menu .touch-trigger:before {
 	content: '\00BB';
 	direction: ltr;
@@ -90,10 +95,12 @@
 	line-height: 1;
 	vertical-align: baseline;
 }
+
 #breadcrumb-menu .dropdown-left .touch-trigger {
 	left: 0;
 	right: auto;
 }
+
 #breadcrumb-menu .dropdown-left .touch-trigger:before {
 	content: '\00AB';
 }
@@ -103,9 +110,11 @@
 	padding-bottom: 7px;
 	padding-top: 7px;
 }
+
 #breadcrumb-menu.touch-enabled .children > a:before {
 	display: none;
 }
+
 #breadcrumb-menu.touch-enabled .dropdown-left a {
 	padding-left: 30px;
 	padding-right: 4px;
