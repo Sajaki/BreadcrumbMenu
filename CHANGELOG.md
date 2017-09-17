@@ -4,7 +4,6 @@
   - [FIX] merged with changes from CDB version by david63
   - [FIX] updated jqueryui reference
   - [FIX] responsive issues  
-  - [FIX] tested against epv  
 
 - 1.0.6 (11/06/2017)
   - [FIX] CDB version by david63
