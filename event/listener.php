@@ -9,8 +9,20 @@
 
 namespace paybas\breadcrumbmenu\event;
 
+/**
+* @ignore
+*/
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use \phpbb\auth\auth;
+use \phpbb\config\config;
+use \phpbb\db\driver\driver_interface;
+use \phpbb\request\request_interface;
+use \phpbb\template\template;
+use \phpbb\user;
 
+/**
+* Event listener
+*/
 class listener implements EventSubscriberInterface
 {
 	/** @var \phpbb\auth\auth */
@@ -37,18 +49,40 @@ class listener implements EventSubscriberInterface
 	/** @var string PHP extension */
 	protected $phpEx;
 
-	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\request\request_interface $request, \phpbb\template\template $template, \phpbb\user $user, $root_path, $phpEx)
+	/**
+	* Constructor for listener
+	*
+	* @param \phpbb\auth\auth					$auth		Auth object
+	* @param \phpbb\config\config				$config		Config object
+	* @param \phpbb\db\driver\driver_interface	$db			db object
+	* @param \phpbb\request\request				$request	Request object
+	* @param \phpbb\template\template			$template	Template object
+	* @param \phpbb\user                		$user		User object
+	* @param string 							$root_path	phpBB root path
+	* @param string 							$phpEx		phpBB ext
+	*
+	* @return \paybas\breadcrumbmenu\event\listener
+	* @access public
+	*/
+	public function __construct(auth $auth, config $config, driver_interface $db, request_interface $request, template $template, user $user, $root_path, $phpEx)
 	{
-		$this->auth = $auth;
-		$this->config = $config;
-		$this->db = $db;
-		$this->request = $request;
-		$this->template = $template;
-		$this->user = $user;
-		$this->root_path = $root_path;
-		$this->phpEx = $phpEx;
+		$this->auth 		= $auth;
+		$this->config 		= $config;
+		$this->db 			= $db;
+		$this->request 		= $request;
+		$this->template 	= $template;
+		$this->user 		= $user;
+		$this->root_path 	= $root_path;
+		$this->phpEx 		= $phpEx;
 	}
 
+	/**
+	* Assign functions defined in this class to event listeners in the core
+	*
+	* @return array
+	* @static
+	* @access public
+	*/
 	static public function getSubscribedEvents()
 	{
 		return array(
@@ -64,24 +98,17 @@ class listener implements EventSubscriberInterface
 		// When the event is dispatched from posting.php, the forum_id is not passed,
 		// so its better to use request->variable instead of $event['item_id']
 		$current_id = $this->request->variable('f', 0);
-
-		$list = $this->get_forum_list(false, false, true, false);
-
-		$parents = $this->get_crumb_parents($list, $current_id);
-
-		$list = $this->mark_current($list, $current_id, $parents);
-
-		$tree = $this->build_tree($list);
-
-		$html = $this->build_output($tree);
+		$list 		= $this->get_forum_list(false, false, true, false);
+		$parents 	= $this->get_crumb_parents($list, $current_id);
+		$list 		= $this->mark_current($list, $current_id, $parents);
+		$tree 		= $this->build_tree($list);
+		$html 		= $this->build_output($tree);
 
 		unset($list, $tree);
 
 		if (!empty($html))
 		{
-			$this->template->assign_vars(array(
-				'BREADCRUMB_MENU' => $html,
-			));
+			$this->template->assign_var('BREADCRUMB_MENU',	$html);
 		}
 	}
 
@@ -187,9 +214,9 @@ class listener implements EventSubscriberInterface
 	/**
 	 * Marks the current forum being viewed (and it's parents)
 	 *
-	 * @param    $list          mixed    The list
-	 * @param    $current_id    int        The id of the current forum
-	 * @param    $parents       array    The parents of the current_id
+	 * @param    $list			mixed    The list
+	 * @param    $current_id	int      The id of the current forum
+	 * @param    $parents		array    The parents of the current_id
 	 * @return mixed $list    The updated list
 	 */
 	public function mark_current($list, $current_id, $parents)
@@ -239,7 +266,7 @@ class listener implements EventSubscriberInterface
 	 * Thanks to Nicofuma
 	 *
 	 * @param    $list          mixed    The list
-	 * @param    $length        int        The length of the list
+	 * @param    $length        int      The length of the list
 	 * @return bool|mixed $tree    The tree
 	 */
 	public function build_tree_rec(&$list, $length)

@@ -3,25 +3,25 @@
     "type": "phpbb-extension",
     "description": "This extension adds a drop-down menu to each breadcrumb, containing the sibling and child forums.",
     "homepage": "https://github.com/sajaki/BreadcrumbMenu",
-    "version": "1.0.6",
-    "time": "2017-01-24",
+    "version": "1.0.7",
+    "time": "2017-09-17",
     "license": "GPL-2.0",
     "authors": [
         {
             "name": "PayBas",
-            "email": "admin@pbwow.com",
-            "homepage": "http://www.paybas.com",
             "role": "Lead Developer"
         },
         {
+            "name": "david63",
+            "role": "Maintainer"
+        }, 
+        {
             "name": "Sajaki",
-            "email": "Sajaki@avathar.be",
-            "homepage": "http://www.avathar.be",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.3.3,<7.1",
         "composer/installers": "~1.0"
     },
     "require-dev": {
@@ -30,7 +30,7 @@
     "extra": {
         "display-name": "Breadcrumb Menu",
         "soft-require": {
-            "phpbb/phpbb": ">=3.1.3,<3.2@dev"
+            "phpbb/phpbb": ">=3.1.10"
         },
         "version-check": {
             "host": "www.avathar.be",
