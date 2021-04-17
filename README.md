@@ -1,11 +1,10 @@
-Breadcrumb Menu for phpBB 3.1/3.2
-=================================
+Breadcrumb Menu for phpBB
+========================
 
-Extension for phpBB 3.1/3.2 to turn the breadcrumb navigation into a forum tree menu.
+Extension for phpBB 3.3 to turn the breadcrumb navigation into a forum tree menu.
 
 ## Version
-v1.0.7 (17-09-2017)
-[![Build Status](https://api.travis-ci.org/Sajaki/BreadcrumbMenu.svg)](https://travis-ci.org/Sajaki/BreadcrumbMenu)
+v1.0.8 (17-04-2021)
 
 ![Screenshot](screenshot.png)
 
@@ -16,20 +15,17 @@ v1.0.7 (17-09-2017)
 - Support for touch devices.
 - Supports the official phpBB Pages extension.
 
-#### Requirements
-- phpBB 3.1.3 or higher
-- PHP 5.3.3 or higher
+#### Minimum Requirements
+- phpBB 3.2.0
+- PHP 5.4.0
 
-#### Languages supported
-- No language files included/necessary
-
-## Installation
+## Install
 1. [Download the latest release](https://github.com/Sajaki/BreadcrumbMenu/releases) and unzip it.
 2. Copy the entire contents from the unzipped folder to `/ext/paybas/breadcrumbmenu/`.
 3. Navigate in the ACP to `Customise -> Manage extensions`.
 4. Find `Breadcrumb Menu` under "Disabled Extensions" and click `Enable`.
 
-## Uninstallation
+## Uninstall
 1. Navigate in the ACP to `Customise -> Manage extensions`.
 2. Click the `Disable` link for `Breadcrumb Menu`.
 3. To permanently uninstall, click `Delete Data`, then delete the `breadcrumbmenu` folder from `/ext/paybas/`.
