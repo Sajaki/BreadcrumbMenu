@@ -32,7 +32,8 @@
         "version-check": {
             "host": "www.avathar.be",
             "directory": "/versioncheck",
-            "filename": "breadcrumbmenu.json"
+            "filename": "breadcrumbmenu.json",
+            "ssl": true
         }
     }
 }
