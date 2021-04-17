@@ -49,6 +49,9 @@ class listener implements EventSubscriberInterface
 	/** @var string PHP extension */
 	protected $phpEx;
 
+	/** @var string phpBB tables */
+	protected $tables;
+
 	/**
 	* Constructor for listener
 	*
@@ -60,11 +63,12 @@ class listener implements EventSubscriberInterface
 	* @param \phpbb\user                		$user		User object
 	* @param string 							$root_path	phpBB root path
 	* @param string 							$phpEx		phpBB ext
+	* @param array	                            $tables		phpBB db tables
 	*
 	* @return \paybas\breadcrumbmenu\event\listener
 	* @access public
 	*/
-	public function __construct(auth $auth, config $config, driver_interface $db, request_interface $request, template $template, user $user, $root_path, $phpEx)
+	public function __construct(auth $auth, config $config, driver_interface $db, request_interface $request, template $template, user $user, $root_path, $phpEx, $tables)
 	{
 		$this->auth 		= $auth;
 		$this->config 		= $config;
@@ -74,6 +78,7 @@ class listener implements EventSubscriberInterface
 		$this->user 		= $user;
 		$this->root_path 	= $root_path;
 		$this->phpEx 		= $phpEx;
+		$this->tables		= $tables;
 	}
 
 	/**
@@ -115,11 +120,11 @@ class listener implements EventSubscriberInterface
 	/**
 	 * Modified version of the jumpbox, just lists authed forums (in the correct order)
 	 */
-	private function get_forum_list($ignore_id = false, $ignore_acl = false, $ignore_nonpost = false, $ignore_emptycat = true, $only_acl_post = false)
+	function get_forum_list($ignore_id = false, $ignore_acl = false, $ignore_nonpost = false, $ignore_emptycat = true, $only_acl_post = false)
 	{
 		// This query is identical to the jumpbox one
 		$sql = 'SELECT forum_id, forum_name, parent_id, forum_type, forum_flags, forum_options, left_id, right_id
-			FROM ' . FORUMS_TABLE . '
+			FROM ' . $this->tables['forums'] . '
 			ORDER BY left_id ASC';
 		$result = $this->db->sql_query($sql, 600);
 

@@ -10,5 +10,6 @@ services:
             - '@user'
             - '%core.root_path%'
             - '%core.php_ext%'
+            - '%tables%'			
         tags:
             - { name: event.listener }
