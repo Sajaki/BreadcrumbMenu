@@ -1,5 +1,6 @@
 /**
 * Breadcrumb Menu event handler
+* v1.1.0
 */
 function toggleBCDropdown($trigger, show)
 {
@@ -159,7 +160,7 @@ function setupBCMenu()
 
 		// find the link reference
 		var forum_ref = $trigger.attr('data-navbar-reference'),
-			forum_id = parseInt($trigger.attr('data-forum-id')),
+			forum_id = parseInt($this.attr('data-forum-id')),
 			crumb;
 
 		if (forum_ref === 'index') {
