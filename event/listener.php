@@ -13,12 +13,12 @@ namespace paybas\breadcrumbmenu\event;
 * @ignore
 */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use \phpbb\auth\auth;
-use \phpbb\config\config;
-use \phpbb\db\driver\driver_interface;
-use \phpbb\request\request_interface;
-use \phpbb\template\template;
-use \phpbb\user;
+use phpbb\auth\auth;
+use phpbb\config\config;
+use phpbb\db\driver\driver_interface;
+use phpbb\request\request_interface;
+use phpbb\template\template;
+use phpbb\user;
 
 /**
 * Event listener
@@ -283,17 +283,20 @@ class listener implements EventSubscriberInterface
 		while (current($list) !== false)
 		{
 			$next = next($list);
-			if (!($tree['forum_id'] == $next['parent_id']))
+			if ($next)
 			{
-				// The current node isn't our child, so we backwards and we return the current tree
-				prev($list);
+				if (!($tree['forum_id'] == $next['parent_id']))
+				{
+					// The current node isn't our child, so we backwards and we return the current tree
+					prev($list);
 
-				return $tree;
-			}
-			else
-			{
-				// Let our child retrieve its own ones
-				$tree['children'][] = $this->build_tree_rec($list, $length);
+					return $tree;
+				}
+				else
+				{
+					// Let our child retrieve its own ones
+					$tree['children'][] = $this->build_tree_rec($list, $length);
+				}
 			}
 		}
 

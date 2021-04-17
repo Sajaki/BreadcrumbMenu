@@ -1,5 +1,10 @@
 ### Changelog 
 
+
+- 1.1.0 (17/04/2021)
+  - [FIX] updated js logic for html changes in prosilver 3.3
+  - [FIX] php 8.0 compatible
+
 - 1.0.7 (22/01/2017)
   - [FIX] merged with changes from CDB version by david63
   - [FIX] updated jqueryui reference
